@@ -1,19 +1,22 @@
-import java.util.stream.Collectors;
-import java.util.Arrays;
-import java.util.Set;
+import java.util.HashSet;
 
 class Solution {
     public int solution(int[] nums) {
 
-        Set<Integer> uniqueNumsSet = Arrays.stream(nums).boxed().collect(Collectors.toSet());
+        // 배열에서 중복 제거를 하고
+        // 배열 길이 / 2 > 유니크 개수 ? 유니크 개수 : 배열 길이 / 2
         
-        int uniqueNumsNums = uniqueNumsSet.size();
+        HashSet<Integer> set = new HashSet<>();
         
-        if (nums.length / 2 >= uniqueNumsNums ) {
-            return uniqueNumsNums;
-        } else {
-            return nums.length / 2;
+        for (Integer pokemon: nums) {
+            set.add(pokemon);
         }
+        
+        if (nums.length / 2 > set.size()) {
+            return set.size();
+        }
+        
+        return nums.length / 2;
         
     }
 }
