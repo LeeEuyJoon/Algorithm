@@ -4,7 +4,6 @@ public class Solution {
     public int[] solution(int[] arr) {
         
         ArrayDeque<Integer> deque = new ArrayDeque<>();
-        HashSet<Integer> set = new HashSet<>();
 
         int basket = Integer.MIN_VALUE;    
         for (Integer i : arr) {            
