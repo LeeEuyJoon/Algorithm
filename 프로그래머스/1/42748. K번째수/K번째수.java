@@ -5,19 +5,15 @@ class Solution {
     public int[] solution(int[] array, int[][] commands) {
         
         int[] answer = new int[commands.length];
-        int number;
-        int[] command;
         
-        for (int i = 0; i < commands.length; i++) {
-            command = commands[i];
-            number = Arrays.stream(array, command[0] - 1, command[1])
-                .sorted()
-                .skip(command[2]-1)
-                .findFirst()
-                .orElseThrow();
-            answer[i] = number;
+        int i = 0;
+        for (int[] c: commands) {
+            int[] slicedArr = Arrays.copyOfRange(array, c[0] - 1, c[1]);
+            Arrays.sort(slicedArr);
+            answer[i++] = slicedArr[c[2]-1];
         }
         
         return answer;
+
     }
 }
